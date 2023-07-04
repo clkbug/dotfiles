@@ -1,0 +1,11 @@
+[user]
+	email = mail@clkbug.net
+	name = clkbug
+[core]
+	editor = vim
+
+[alias]
+  graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %C(cyan)%cn %Cred%d %Creset%s'
+
+[init]
+	defaultBranch = main

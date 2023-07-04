@@ -1,0 +1,44 @@
+if [ -z ${XDG_CONFIG_HOME+x} ]; then
+    export XDG_CONFIG_HOME=${HOME}/.config
+fi
+
+if [ -z ${XDG_CACHE_HOME+x} ]; then
+    XDG_CACHE_HOME=${HOME}/.cache
+fi
+
+if [ -z ${XDG_DATA_HOME+x} ]; then
+    XDG_DATA_HOME=${HOME}/.local/share
+fi
+
+for d in ${XDG_CONFIG_HOME} ${XDG_CACHE_HOME} ${XDG_DATA_HOME}; do
+    if [ ! -d ${d} ]; then
+        mkdir -p ${d}
+    fi
+done
+
+
+
+export LS_COLORS=$LS_COLORS:'di=0;36:ow=0;36'
+
+export PATH=\
+${HOME}/.cargo/bin\
+:${HOME}/go/bin\
+:${HOME}/.opam/default/bin\
+:${HOME}/.dotnet/tools\
+:${HOME}/.volta/bin\
+:${HOME}/.local/bin\
+:${HOME}/.local/riscv/bin\
+:/snap/bin\
+:$PATH
+
+eval $(opam env)
+
+alias rm='rm -i'
+alias mv='mv -i'
+alias goshr='rlwrap gosh'
+
+export PYTHONSTARTUP=${HOME}/dotfiles/.pythonrc
+
+# vim は XDG_CONFIG_HOME を読みに行ってくれないのでそちらを読むように環境変数で指定する
+# ただし、nvim は分岐して別のディレクトリを読みに行くようにする
+export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
