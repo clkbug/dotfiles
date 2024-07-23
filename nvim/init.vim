@@ -1,91 +1,20 @@
 lua require('init')
 
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " Vim-plug
-" if has('vim_starting')
-"     set rtp+=~/.vim/plugged/vim-plug
-"     if !isdirectory(expand('~/.config/nvim/plugged/vim-plug'))
-"         echo 'install vim-plug...'
-"         call system('mkdir -p ~/.config/nvim/plugged/vim-plug')
-"         call system('git clone https://github.com/junegunn/vim-plug.git ~/.vim/plugged/vim-plug/autoload')
-"     end
-" endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim-plug
+if has('vim_starting')
+    set rtp+=~/.vim/plugged/vim-plug
+    if !isdirectory(expand('~/.config/nvim/plugged/vim-plug'))
+        echo 'install vim-plug...'
+        call system('mkdir -p ~/.config/nvim/plugged/vim-plug')
+        call system('git clone https://github.com/junegunn/vim-plug.git ~/.vim/plugged/vim-plug/autoload')
+    end
+endif
 
-" call plug#begin('~/.config/nvim/plugged')
-"     Plug 'junegunn/vim-plug', {'dir': '~/.config/nvim/plugged/vim-plug/autoload'}
-"     Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-"     Plug 'scrooloose/syntastic'
-"     Plug 'Shougo/vimproc.vim', {'do': 'make'}
-"     Plug 'kana/vim-operator-user'
-"     Plug 'rhysd/vim-clang-format'
-"     Plug 'tyru/caw.vim'
-
-"     Plug 'prabirshrestha/async.vim'
-"     Plug 'prabirshrestha/vim-lsp'
-" call plug#end()
-
-" """"""""" deoplete
-" let g:deoplete#enable_at_startup = 1
-" if !exists('g:deoplete#omni#input_patterns')
-"   let g:deoplete#omni#input_patterns = {}
-" endif
-" " let g:deoplete#disable_auto_complete = 1
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" " deoplete tab-complete
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-
-" """"""""" syntastic settings
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
-" """"""""" caw.vim
-" " C-c でコメントアウト
-" nmap <C-c> <Plug>(caw:I:toggle)
-" vmap <C-c> <Plug>(caw:I:toggle)
-
-" """"""""" vim-lsp clangd
-" let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('~/vim-lsp.log')
-" call lsp#register_server({
-"     \ 'name': '/usr/lib/llvm-6.0/bin/clangd',
-"     \ 'cmd': {server_info->['clangd']},
-"     \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-"     \ })
-
-" " オムニ補完設定
-" autocmd FileType typescript setlocal omnifunc=lsp#complete
-
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" " set cursorline
-" " hi CursorLineNr term=bold cterm=NONE ctermfg=203 ctermbg=NONE
-" " hi clear CursorLine
-
-" autocmd ColorScheme * highlight LineNr ctermfg=255
-" colorscheme elflord
-
-" nnoremap <ESC><ESC> :nohl<Return>
-
-" " escape from insert mode
-" inoremap <silent> jj <ESC>
-" inoremap <silent> kk <ESC>
-
-" " cursor moving in insert mode
-" inoremap <C-j> <Down>
-" inoremap <C-k> <Up>
-" inoremap <C-h> <Left>
-" inoremap <C-l> <Right>
-" inoremap <C-a> <ESC>I
-" inoremap <C-e> <ESC>A
-
-" tnoremap <Esc> <C-\><C-n>
+call plug#begin('~/.config/nvim/plugged')
+    Plug 'junegunn/vim-plug', {'dir': '~/.config/nvim/plugged/vim-plug/autoload'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
 
 
 " " TAB settings
