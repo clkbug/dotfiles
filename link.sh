@@ -1,4 +1,7 @@
-#!/bin/bash -eu
+#!/bin/bash
+
+set -euo pipefail
+set -x
 
 if [ -z ${XDG_CONFIG_HOME+x} ]; then
     export XDG_CONFIG_HOME=${HOME}/.config
