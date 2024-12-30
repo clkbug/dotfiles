@@ -31,7 +31,17 @@ ${HOME}/.cargo/bin\
 :/snap/bin\
 :$PATH
 
-eval $(opam env)
+export LD_LIBRARY_PATH=\
+${HOME}/.local/lib\
+:$LD_LIBRARY_PATH
+
+export C_INCLUDE_PATH=\
+${HOME}/.local/include\
+:$C_INCLUDE_PATH
+
+if which opam; then
+    eval $(opam env)
+fi
 
 alias rm='rm -i'
 alias mv='mv -i'
@@ -42,3 +52,4 @@ export PYTHONSTARTUP=${HOME}/dotfiles/.pythonrc
 # vim は XDG_CONFIG_HOME を読みに行ってくれないのでそちらを読むように環境変数で指定する
 # ただし、nvim は分岐して別のディレクトリを読みに行くようにする
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
+
