@@ -74,7 +74,7 @@ vmap <C-c> <Plug>(caw:I:toggle)
 " hi clear CursorLine
 
 autocmd ColorScheme * highlight LineNr ctermfg=255
-colorscheme elflord
+colorscheme desert
 
 nnoremap <ESC><ESC> :nohl<Return>
 
