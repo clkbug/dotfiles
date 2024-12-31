@@ -17,19 +17,27 @@ for d in ${XDG_CONFIG_HOME} ${XDG_CACHE_HOME} ${XDG_DATA_HOME}; do
 done
 
 
+export HISTSIZE=100000000
+export HISTFILESIZE=100000000
 
 export LS_COLORS=$LS_COLORS:'di=0;36:ow=0;36'
 
+export DENO_INSTALL="${HOME}/.deno"
 export PATH=\
-${HOME}/.cargo/bin\
 :${HOME}/go/bin\
 :${HOME}/.opam/default/bin\
+:${HOME}/.dotnet/\
 :${HOME}/.dotnet/tools\
 :${HOME}/.volta/bin\
 :${HOME}/.local/bin\
 :${HOME}/.local/riscv/bin\
+:${HOME}/.local/lean/bin\
+:${HOME}/.local/oss-cad-suite/bin\
 :/snap/bin\
+:"$DENO_INSTALL/bin"\
 :$PATH
+source $HOME/.elan/env
+source "${HOME}/.cargo/env"
 
 export LD_LIBRARY_PATH=\
 ${HOME}/.local/lib\
@@ -52,4 +60,15 @@ export PYTHONSTARTUP=${HOME}/dotfiles/.pythonrc
 # vim は XDG_CONFIG_HOME を読みに行ってくれないのでそちらを読むように環境変数で指定する
 # ただし、nvim は分岐して別のディレクトリを読みに行くようにする
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
+
+source ${HOME}/.local/src/emsdk/emsdk_env.sh
+. ${HOME}/.nix-profile/etc/profile.d/nix.sh
+
+export PAGER=less
+
+export GUILE_LOAD_COMPILED_PATH=${HOME}/.local/lib/guile/3.0/site-ccache
+export GUILE_LOAD_PATH=${HOME}/.local/share/guile/site/3.0
+
+export CHICKEN_INSTALL_REPOSITORY=${HOME}/.local
+export CHICKEN_REPOSITORY_PATH=/usr/local/lib/chicken/9:${HOME}/.local
 

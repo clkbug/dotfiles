@@ -3,4 +3,4 @@ all:
 	emacs --batch -f batch-byte-compile init.el
 
 clean:
-	rm -rf auto-save-list eln-cache init.elc
+	rm -rf auto-save-list eln-cache elpa init.elc
