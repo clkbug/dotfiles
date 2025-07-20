@@ -85,8 +85,8 @@ export PYTHONSTARTUP=${HOME}/dotfiles/pythonrc
 # ただし、nvim は分岐して別のディレクトリを読みに行くようにする
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
 
-source ${HOME}/.local/src/emsdk/emsdk_env.sh
-. ${HOME}/.nix-profile/etc/profile.d/nix.sh
+# source ${HOME}/.local/src/emsdk/emsdk_env.sh
+# . ${HOME}/.nix-profile/etc/profile.d/nix.sh
 
 export PAGER=less
 
